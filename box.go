@@ -1,4 +1,4 @@
-package vagrantcloud
+package atlas
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// Boxes are the primary resource on Vagrant Cloud.
+// Boxes are the primary resource on Atlas.
 // Before creating versions with attached providers, you'll need to create a box.
 type Box struct {
 	api                 *Api

@@ -1,4 +1,4 @@
-package vagrantcloud
+package atlas
 
 import (
 	"encoding/json"
@@ -85,7 +85,7 @@ func (p *Provider) Get() error {
 //	OriginalUrl
 //		An HTTP URL to the box file.
 //		This must be accessible at this URL from the machine where you expect a user to download the box by using Vagrant.
-//		If ommitted, we assume you wish to host the provider with Vagrant Cloud.
+//		If ommitted, we assume you wish to host the provider with Atlas.
 //
 // The provider API is used to host boxes.
 // To create a hosted box, simply omit the URL parameter.
@@ -111,7 +111,7 @@ func (p *Provider) New() error {
 //	OriginalUrl
 //		An HTTP URL to the box file.
 //		This must be accessible at this URL from the machine where you expect a user to download the box by using Vagrant.
-//		If ommitted, we assume you wish to host the provider with Vagrant Cloud.
+//		If ommitted, we assume you wish to host the provider with Atlas.
 func (p *Provider) Set() error {
 	params := url.Values{}
 	params.Add("provider[url]", p.OriginalUrl)

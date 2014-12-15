@@ -1,4 +1,4 @@
-package vagrantcloud
+package atlas
 
 import (
 	"encoding/json"

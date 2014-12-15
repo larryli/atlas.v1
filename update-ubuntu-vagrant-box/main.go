@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"github.com/larryli/vagrantcloud.v1"
+	"github.com/larryli/atlas.v1"
 	"io/ioutil"
 	"log"
 	"strings"
@@ -17,20 +17,20 @@ type Arch struct {
 
 type Release string
 
-type Box vagrantcloud.Box
+type Box atlas.Box
 
-type Version vagrantcloud.Version
+type Version atlas.Version
 
 type CodeNames map[string]string
 
 const (
 	url      = "https://cloud-images.ubuntu.com/vagrant/"
 	notFound = "404 Not Found"
-	see      = "\n\nSee https://github.com/larryli/vagrantcloud.v1/tree/master/update-ubuntu-vagrant-box"
+	see      = "\n\nSee https://github.com/larryli/atlas.v1/tree/master/update-ubuntu-vagrant-box"
 )
 
 var (
-	api      *vagrantcloud.Api
+	api      *atlas.Api
 	names    = CodeNames{}
 	username = flag.String("username", "larryli", "username")
 	token    = flag.String("token", "", "access_token")
@@ -182,7 +182,7 @@ func (v *Version) exists(versions []string) (found bool) {
 }
 
 func (v *Version) delete() {
-	version := (*vagrantcloud.Version)(v)
+	version := (*atlas.Version)(v)
 	todo := fmt.Sprintf("delete \"%s\" Version: \"%s\"", version.Uri(), version.Version)
 	if !(*test) {
 		fatal(version.Delete(), todo)
@@ -201,7 +201,7 @@ func (b *Box) find(version string) (found bool) {
 }
 
 func (b *Box) add(version, image string) {
-	box := (*vagrantcloud.Box)(b)
+	box := (*atlas.Box)(b)
 	v := box.Version("0.0.1")
 	v.Version = version
 	v.DescriptionMarkdown = image + see
@@ -209,7 +209,7 @@ func (b *Box) add(version, image string) {
 	if !(*test) {
 		fatal(v.New(), todo)
 	}
-	p := v.Provider(vagrantcloud.ProviderVirtualbox)
+	p := v.Provider(atlas.ProviderVirtualbox)
 	p.OriginalUrl = image
 	todo = fmt.Sprintf("add \"%s\" Version: \"%s\"", p.Uri(), v.Version)
 	if !(*test) {
@@ -228,7 +228,7 @@ func main() {
 		flag.Usage()
 	} else {
 		initCodeNames()
-		api = vagrantcloud.New(*token)
+		api = atlas.New(*token)
 		log.Println("start")
 		for _, release := range fetchReleases() {
 			release.scan()

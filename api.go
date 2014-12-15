@@ -1,4 +1,4 @@
-package vagrantcloud
+package atlas
 
 import (
 	"io"
@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	baseUrl = "https://vagrantcloud.com"
+	baseUrl = "https://atlas.hashicorp.com"
 	apiUri  = "/api/v1"
 )
 

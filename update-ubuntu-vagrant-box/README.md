@@ -1,11 +1,11 @@
-Update Ubuntu Vagrant Box
+Update Ubuntu Atlas Box
 =========================
 
-update https://cloud-images.ubuntu.com/vagrant/ to https://vagrantcloud.com/larryli
+update https://cloud-images.ubuntu.com/vagrant/ to https://atlas.hashicorp.com/larryli
 
 Get:
 
-	go get -ldflags "-s -w" github.com/larryli/vagrantcloud.v1/update-ubuntu-vagrant-box
+	go get -ldflags "-s -w" github.com/larryli/atlas.v1/update-ubuntu-vagrant-box
 
 Test:
 

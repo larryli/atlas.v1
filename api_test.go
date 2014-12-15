@@ -1,13 +1,13 @@
-package vagrantcloud_test
+package atlas_test
 
 import (
-	"github.com/larryli/vagrantcloud.v1"
+	"github.com/larryli/atlas.v1"
 	"testing"
 )
 
 func TestApi(t *testing.T) {
 	url := "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
-	a, err := vagrantcloud.NewFromFile("token.txt")
+	a, err := atlas.NewFromFile("token.txt")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -36,7 +36,7 @@ func TestApi(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	p := v.Provider(vagrantcloud.ProviderVirtualbox)
+	p := v.Provider(atlas.ProviderVirtualbox)
 	p.OriginalUrl = url
 	if err := p.New(); err != nil {
 		t.Fatal(err)
