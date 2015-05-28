@@ -141,6 +141,7 @@ func (r Release) scan() {
 		if err != nil && strings.EqualFold(err.Error(), notFound) {
 			box.ShortDescription = r.title(t.info, "")
 			box.DescriptionMarkdown = r.url() + see
+			box.Private = false
 			todo = fmt.Sprintf("add \"%s\"", box.Uri())
 			if !(*test) {
 				fatal(box.New(), todo)
